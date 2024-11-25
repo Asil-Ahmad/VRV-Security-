@@ -27,7 +27,7 @@ const App = () => {
     <div className='container  '>
       <Navbar />
       <ToastContainer />
-      <section className='border-black border-x-[1px] border-b-[1px]'>
+      <section className=''>
         <Routes>
           <Route path='/dashboard' element={<Dashboard />} />
           <Route
