@@ -18,13 +18,8 @@ const App = () => {
     localStorage.setItem("token", token);
   }, [token]);
 
-  return token === "" ? (
-    <>
-      <ToastContainer />
-      <AdminLogin setToken={setToken} />
-    </>
-  ) : (
-    <div className='container  '>
+  return (
+    <div className=''>
       <Navbar />
       <ToastContainer />
       <section className=''>

@@ -3,7 +3,7 @@ import { ShopContext } from "../context/ShopContext";
 import axios from "axios";
 import { toast } from "react-toastify";
 import Loader from "../constant/Loader";
-import { addimage } from "../assets/icons";
+import { addimage, user } from "../assets/icons";
 
 const CreateEmployee = ({ token }) => {
   const { backendURL, navigate } = useContext(ShopContext);
@@ -70,66 +70,77 @@ const CreateEmployee = ({ token }) => {
   ) : (
     <>
       <h1 className='bg-[#ffff00]'>Create Employee</h1>
-
-      <form
-        onSubmit={handleSubmit}
-        className='px-20 py-10 w-[50%] grid grid-cols-1 grid-rows-4 gap-4'
-      >
+      <form onSubmit={handleSubmit} className='flex flex-col justify-center'>
+        {/* //---------IMAGE UPLOAD-------------------------------------------------------  */}
+        <div className='flex gap-5 w-full'>
+          <label htmlFor='image'>
+            <img
+              src={image ? URL.createObjectURL(image) : user}
+              alt=''
+              className='w-44 h-44 rounded-full  object-cover'
+            />
+          </label>
+          <input
+            type='file'
+            id='image'
+            required
+            accept='.jpg,.jpeg,.png'
+            onChange={(e) => setImage(e.target.files[0])}
+            hidden
+          />
+        </div>
         {/* //---------NAME-------------------------------------------------------  */}
-        <div className='flex gap-5 w-full'>
-          <p className='w-[25%]'>Name</p>
-          <input
-            className='border-black px-2 border-[1px] max-w-48'
-            type='text'
-            value={name}
-            required
-            onChange={(e) => {
-              setName(e.target.value);
-            }}
-          />
-        </div>
+
+        <input
+          className='border-black px-2 border-[1px]  max-w-48  '
+          type='text'
+          placeholder='Name'
+          value={name}
+          required
+          onChange={(e) => {
+            setName(e.target.value);
+          }}
+        />
+
         {/* //---------EMAIL-------------------------------------------------------  */}
-        <div className='flex gap-5 w-full'>
-          <p className='w-[25%]'>Email</p>
-          <input
-            className='border-black px-2 border-[1px] max-w-48 '
-            type='email'
-            value={email}
-            required
-            onChange={(e) => {
-              setEmail(e.target.value);
-            }}
-          />
-        </div>
+
+        <input
+          className='border-black px-2 border-[1px] max-w-48 '
+          type='email'
+          value={email}
+          required
+          onChange={(e) => {
+            setEmail(e.target.value);
+          }}
+        />
+
         {/* //---------MOBILE NO-------------------------------------------------------  */}
-        <div className='flex gap-5 w-full'>
-          <p className='w-[25%]'>Mobile No</p>
-          <input
-            className='border-black px-2 border-[1px] max-w-48'
-            type='text' //we added text becoz maxlength in ignored in number
-            value={number}
-            pattern='\d*' //we add this to
-            maxLength='10'
-            required
-            onChange={(e) => {
-              setNumber(e.target.value);
-            }}
-          />
-        </div>
+
+        <input
+          className='border-black px-2 border-[1px] max-w-48'
+          type='text' //we added text becoz maxlength in ignored in number
+          value={number}
+          pattern='\d*' //we add this to
+          maxLength='10'
+          required
+          onChange={(e) => {
+            setNumber(e.target.value);
+          }}
+        />
+
         {/* //---------DESIGNATION------------------------------------------------------- */}
-        <div className='flex gap-5 w-full'>
-          <p className='w-[25%]'>Designation</p>
-          <select
-            className='border-black px-2 border-[1px]'
-            onChange={(e) => setDesignation(e.target.value)}
-            required
-          >
-            <option value=''>Choose an option.......</option>
-            <option value='HR'>HR</option>
-            <option value='Manager'>Manager</option>
-            <option value='Sales'>Sales</option>
-          </select>
-        </div>
+
+        <select
+          className='border-black px-2 border-[1px]'
+          onChange={(e) => setDesignation(e.target.value)}
+          required
+        >
+          <option value=''>Choose an option.......</option>
+          <option value='HR'>HR</option>
+          <option value='Manager'>Manager</option>
+          <option value='Sales'>Sales</option>
+        </select>
+
         {/* //---------GENDER-------------------------------------------------------  */}
         <div className='flex gap-5 w-full'>
           <p className='w-[25%]'>Gender</p>
@@ -193,26 +204,7 @@ const CreateEmployee = ({ token }) => {
             />
           </label>
         </div>
-        {/* //---------IMAGE UPLOAD-------------------------------------------------------  */}
-        <div className='flex gap-5 w-full'>
-          <p className='w-[25%]'>Upload Image</p>
 
-          <label htmlFor='image'>
-            <img
-              src={image ? URL.createObjectURL(image) : addimage}
-              alt=''
-              className='w-12 h-12  object-cover'
-            />
-          </label>
-          <input
-            type='file'
-            id='image'
-            required
-            accept='.jpg,.jpeg,.png'
-            onChange={(e) => setImage(e.target.files[0])}
-            hidden
-          />
-        </div>
         {/* //---------SUBMIT BUTTON-------------------------------------------------------  */}
         <div className='flex gap-5 w-full'>
           <div className='w-[25%]' />

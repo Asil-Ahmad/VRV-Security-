@@ -5,6 +5,8 @@ import { NavLink } from "react-router-dom";
 import { logo } from "../assets/icons";
 import {
   CircleHelpIcon,
+  HamIcon,
+  MenuIcon,
   Search,
   SearchIcon,
   SettingsIcon,
@@ -14,17 +16,17 @@ import {
 const Navbar = () => {
   const { username } = useContext(ShopContext);
   return (
-    <header className=''>
+    <header className='sm:px-20 px-2'>
       <nav className='py-5 w-full flex justify-between items-center '>
         <div className='flex gap-2 items-center'>
           <img src={logo} alt='' className='w-12 rounded' />
-          <h1 className='font-poppins text-xl font-medium'>
+          <h1 className='font-poppins sm:text-xl text-md font-medium'>
             VRV {""}
             <span className='font-light text-gray-400'>Admin Dashboard</span>
           </h1>
         </div>
 
-        <div className='flex items-center justify-between gap-5'>
+        <div className='sm:flex hidden items-center justify-between gap-5'>
           <label htmlFor='search' className='relative flex items-center'>
             <input
               type='search'
@@ -36,13 +38,16 @@ const Navbar = () => {
           </label>
 
           <div className='sm:flex hidden items-center gap-2 '>
-          <SettingsIcon color="white" fill="gray" />
-          <CircleHelpIcon color="white" fill="gray" />
+            <SettingsIcon color='white' fill='gray' className="hover:rotate-45 duration-200" />
+            <CircleHelpIcon color='white' fill='gray' className="hover:scale-105 duration-300" />
             <p className='text-sm font-poppins tracking-wide'>Asil Ahmad</p>
-            <UserCircle color="white" fill="gray" />
+            <UserCircle color='white' fill='gray' />
             {/* User Image here */}
           </div>
         </div>
+
+          <MenuIcon className="sm:hidden block" />
+        
       </nav>
       <hr />
     </header>
