@@ -1,19 +1,17 @@
 import React from "react";
-
+import Lottie from "lottie-react";
 import { ring } from "ldrs";
+import { usercreated } from "../assets/images";
 
 ring.register();
 const Loader = () => {
   return (
-    <div className='container text-center content-center h-[50vh]'>
-      <l-ring
-        size='40'
-        stroke='5'
-        bg-opacity='0'
-        speed='2'
-        color='black'
-      ></l-ring>
-    </div>
+    <Lottie
+      animationData={usercreated}
+      loop={false}
+      className=' text-center sm:w-1/2 m-auto h-[70vh]   '
+      title='List All Users'
+    />
   );
 };
 

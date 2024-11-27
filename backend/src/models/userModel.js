@@ -11,5 +11,5 @@ const userSchema = new mongoose.Schema({
   date: { type: Number, required: true }, //here we will use Date.now()
 });
 
-const userModel = mongoose.models.user || mongoose.model("user", userSchema);
+const userModel = mongoose.models.vrv || mongoose.model("vrv", userSchema);
 export default userModel;

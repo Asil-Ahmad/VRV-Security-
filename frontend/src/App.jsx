@@ -11,15 +11,22 @@ import AdminLogin from "./components/AdminLogin";
 
 const App = () => {
   const [token, setToken] = useState(
-    localStorage.getItem("token") ? localStorage.getItem("token") : ""
+    localStorage.getItem("token")
+      ? localStorage.getItem("token")
+      : ""
   );
 
   useEffect(() => {
     localStorage.setItem("token", token);
   }, [token]);
 
-  return (
-    <div className=''>
+  return token === "" ? (
+    <>
+      <ToastContainer />
+      <AdminLogin setToken={setToken} />
+    </>
+  ) : (
+    <div className='max-w-[1440px] m-auto'>
       <Navbar />
       <ToastContainer />
       <section className=''>

@@ -14,11 +14,14 @@ import {
 } from "lucide-react";
 
 const Navbar = () => {
-  const { username } = useContext(ShopContext);
+  const { username, navigate } = useContext(ShopContext);
   return (
-    <header className='sm:px-20 px-2'>
-      <nav className='py-5 w-full flex justify-between items-center '>
-        <div className='flex gap-2 items-center'>
+    <header className='lg:px-20 px-2'>
+      <nav className='sticky top-10 sm:py-5 py-2 w-full flex justify-between items-center '>
+        <div
+          onClick={() => navigate("/dashboard")}
+          className='flex gap-2 items-center cursor-pointer'
+        >
           <img src={logo} alt='' className='w-12 rounded' />
           <h1 className='font-poppins sm:text-xl text-md font-medium'>
             VRV {""}
@@ -38,16 +41,47 @@ const Navbar = () => {
           </label>
 
           <div className='sm:flex hidden items-center gap-2 '>
-            <SettingsIcon color='white' fill='gray' className="hover:rotate-45 duration-200" />
-            <CircleHelpIcon color='white' fill='gray' className="hover:scale-105 duration-300" />
-            <p className='text-sm font-poppins tracking-wide'>Asil Ahmad</p>
+            <div className='group relative'>
+              <SettingsIcon
+                color='white'
+                fill='gray'
+                className='group-hover:rotate-45 duration-200'
+              />
+              <div className='group-hover:block duration-300 hidden absolute right-2 pt-4'>
+                <div className=' duration-300  rounded-xl  hover:bg-black  bg-white border-[1px]'>
+                  <p
+                    className='text-gray-500 px-4 py-2 hover:text-white cursor-pointer'
+                    onClick={() => {
+                      localStorage.clear(), location.reload();
+                    }}
+                  >
+                    Logout
+                  </p>
+                </div>
+              </div>
+            </div>
+            {/* ---------HELP--------- */}
+            <div className='group relative'>
+              <CircleHelpIcon
+                color='white'
+                fill='gray'
+                className='hover:scale-105 duration-300'
+              />
+              <div className='group-hover:block duration-300 hidden absolute -right-10 pt-4'>
+                <div className='transition-all duration-300 w-36  rounded-xl  hover:bg-black  bg-white border-[1px]'>
+                  <p className='text-gray-500 w-full text-center hover:text-white px-2 py-2 cursor-pointer'>
+                    This is only Test
+                  </p>
+                </div>
+              </div>
+            </div>
+            <p className='text-sm font-poppins tracking-wide'>{username}</p>
             <UserCircle color='white' fill='gray' />
             {/* User Image here */}
           </div>
         </div>
 
-          <MenuIcon className="sm:hidden block" />
-        
+        <MenuIcon className='sm:hidden block' />
       </nav>
       <hr />
     </header>
