@@ -103,7 +103,10 @@ const UserTable = ({ users, token, search, setSearch }) => {
           <option value='5'>Last 30 days</option>
         </select>
       </div>
-      <Link to='/create_employee' class='relative inline-block p-2 rounded-xl text-sm text-black transition bg-white border-[1px] group'>
+      <Link
+        to='/create_employee'
+        class='relative inline-block p-2 rounded-xl text-sm text-black transition bg-white border-[1px] group'
+      >
         <span class='absolute rounded-xl inset-y-0 left-0 w-0 bg-[#059669] transition-all group-hover:w-full' />
         <span class='relative text-black rounded-xl transition-colors group-hover:text-white'>
           Create New User
